@@ -60,12 +60,6 @@ function searchToLatLng(locationName) {
   return location;
 }
 
-//Weather constructor 
-// function Weather(forecastArr, timeArr) {
-//   for (let i = 0; i < timeArr.length; i++) {
-//     this.days.push(new Day(forecastArr[i], timeArr[i]));
-//   }
-// }
 function Day(forecast, time) {
   this.forecast = forecast;
   this.time = time;
@@ -74,9 +68,10 @@ function Day(forecast, time) {
 function getWeatherRoute(locationName) {
   const weatherData = require('./data/darksky.json');
   let retArr = [];
-  console.log(weatherData.daily.data);
+  let time;
+  // console.log(weatherData.daily.data);
   for (let el of weatherData.daily.data) {
-    let time = new Date(el.time);
+    time = new Date(el.time).toDateString();
     retArr.push(new Day (el.summary, time));
   }
   console.log(retArr);
