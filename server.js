@@ -68,7 +68,7 @@ function getWeatherRoute(locationName) {
   let retArr = [];
   let time;
   for (let el of weatherData.daily.data) {
-    time = new Date(el.time).toDateString();
+    time = new Date(el.time*1000).toDateString();
     retArr.push(new Day (el.summary, time));
   }
   return retArr;
