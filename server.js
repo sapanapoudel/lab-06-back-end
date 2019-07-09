@@ -24,7 +24,7 @@ app.get('/location', (request, response) => {
   }
 });
 
-//Weather Route
+// Weather Route
 app.get('/weather', (request, response) => {
   console.log(request.query.data);
   try {
