@@ -24,9 +24,8 @@ app.get('/location', (request, response) => {
   }
 });
 
-//Weather Route
+// Weather Route
 app.get('/weather', (request, response) => {
-  console.log(request.query.data);
   try {
     const weatherData = getWeatherRoute(request.query.data);
     response.send(weatherData);
@@ -56,7 +55,6 @@ function searchToLatLng(locationName) {
     geoData.results[0].geometry.location.lat,
     geoData.results[0].geometry.location.lng
   );
-  // console.log(location);
   return location;
 }
 
@@ -69,12 +67,10 @@ function getWeatherRoute(locationName) {
   const weatherData = require('./data/darksky.json');
   let retArr = [];
   let time;
-  // console.log(weatherData.daily.data);
   for (let el of weatherData.daily.data) {
     time = new Date(el.time).toDateString();
     retArr.push(new Day (el.summary, time));
   }
-  console.log(retArr);
   return retArr;
 }
 
